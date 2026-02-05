@@ -1,301 +1,232 @@
 /* =========================================
-   1. VARIÁVEIS GLOBAIS (PALETA DE CORES)
-   Aqui definimos as cores e efeitos usados em todo o site.
-   Mude aqui para alterar o tema inteiro de uma vez.
+   1. VARIÁVEIS GLOBAIS
    ========================================= */
 :root {
-    --pink-deep: #b00045;       /* Rosa escuro (títulos, hover) */
-    --pink-vibrant: #e6005c;    /* Rosa principal (botões, destaques) */
-    --pink-soft: #fff0f5;       /* Fundo suave */
+    --pink-deep: #b00045;
+    --pink-vibrant: #e6005c;
+    --pink-soft: #fff0f5;
     --pink-gradient: linear-gradient(135deg, #ff4d8d 0%, #ff1a66 100%);
-    --gold: #d4af37;            /* Detalhes dourados */
+    --gold: #d4af37;
     --gold-gradient: linear-gradient(45deg, #d4af37, #fceabb, #d4af37);
-    --dark: #1a1a1a;            /* Texto principal */
+    --dark: #1a1a1a;
     --white: #ffffff;
-    --shadow-card: 0 10px 25px rgba(230, 0, 92, 0.15); /* Sombra padrão dos cards */
+    --shadow-card: 0 10px 25px rgba(230, 0, 92, 0.15);
 }
 
 /* =========================================
    2. RESET E CONFIGURAÇÕES BÁSICAS
-   Remove margens padrão e define a fonte global.
    ========================================= */
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-    font-family: 'Montserrat', sans-serif; 
-    -webkit-tap-highlight-color: transparent; 
-}
-
-body { 
-    background-color: var(--pink-soft); 
-    color: var(--dark); 
-    overflow-x: hidden; /* Evita rolagem lateral indesejada */
-}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; -webkit-tap-highlight-color: transparent; }
+body { background-color: var(--pink-soft); color: var(--dark); overflow-x: hidden; }
 
 /* =========================================
-   3. CABEÇALHO E FAIXA PROMOCIONAL
+   3. CABEÇALHO E FAIXAS
    ========================================= */
 .promo-strip {
-    background: var(--pink-deep); 
-    color: var(--white);
-    text-align: center; 
-    font-size: 0.75rem; 
-    font-weight: 700; 
-    padding: 8px; 
-    letter-spacing: 1px;
+    background: var(--pink-deep); color: var(--white); text-align: center;
+    font-size: 0.75rem; font-weight: 700; padding: 8px; letter-spacing: 1px;
 }
 
 header {
-    background: var(--white); 
-    position: sticky; /* Mantém o menu fixo ao rolar */
-    top: 0; 
-    z-index: 900;
-    padding: 10px 0; 
+    background: var(--white); position: sticky; top: 0; z-index: 900;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-.header-main { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 10px 5%; 
+/* Faixa de Rastreio e Trocas (NOVO) */
+.header-top {
+    text-align: right; padding: 8px 5%; background: #fdfdfd; border-bottom: 1px solid #f0f0f0;
+}
+.nav-links a {
+    text-decoration: none; color: #666; font-size: 0.75rem; margin-left: 20px;
+    font-weight: 500; transition: 0.3s;
+}
+.nav-links a:hover { color: var(--pink-vibrant); text-decoration: underline; }
+
+.header-main {
+    display: flex; justify-content: space-between; align-items: center; padding: 10px 5%;
 }
 
-.logo { 
-    font-family: 'Playfair Display', serif; 
-    font-size: 2rem; 
-    color: var(--pink-vibrant); 
-    text-decoration: none; 
-    font-weight: 800; 
+.logo {
+    font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--pink-vibrant);
+    text-decoration: none; font-weight: 800;
 }
 
-/* --- Ícone do Carrinho --- */
-.cart-btn-wrap { 
-    position: relative; 
-    cursor: pointer; 
-    color: var(--pink-vibrant); 
-    font-size: 1.5rem; 
-    transition: 0.3s; 
+.header-actions { display: flex; align-items: center; gap: 20px; }
+
+/* Mini Barra de Busca (NOVO DESIGN) */
+.search-bar-mini { position: relative; display: flex; align-items: center; }
+.search-bar-mini input {
+    padding: 8px 35px 8px 15px; border-radius: 20px; border: 1px solid #ddd;
+    outline: none; font-size: 0.8rem; width: 150px; transition: 0.3s;
+}
+.search-bar-mini input:focus { width: 200px; border-color: var(--pink-vibrant); }
+.search-bar-mini i { position: absolute; right: 10px; color: var(--pink-vibrant); font-size: 0.8rem; }
+
+/* Botão Carrinho */
+.cart-btn-wrap {
+    position: relative; cursor: pointer; color: var(--pink-vibrant);
+    font-size: 1.5rem; transition: 0.3s;
 }
 .cart-btn-wrap:hover { transform: scale(1.1); }
-
-.cart-badge { 
-    position: absolute; 
-    top: -5px; right: -8px; 
-    background: var(--gold); 
-    color: white;
-    font-size: 0.7rem; 
-    width: 18px; height: 18px; 
-    display: flex; align-items: center; 
-    justify-content: center; 
-    border-radius: 50%; 
-    font-weight: bold;
-}
-
-/* --- Barra de Busca --- */
-.search-bar { margin: 0 5% 10px; position: relative; }
-.search-input {
-    width: 100%; 
-    padding: 12px 45px 12px 20px; 
-    border-radius: 25px; 
-    border: 1px solid #ffbad2;
-    background: #fff; 
-    outline: none; 
-    transition: 0.3s;
-}
-.search-input:focus { 
-    border-color: var(--pink-vibrant); 
-    box-shadow: 0 0 10px rgba(230, 0, 92, 0.2); 
+.cart-badge {
+    position: absolute; top: -5px; right: -8px; background: var(--gold); color: white;
+    font-size: 0.7rem; width: 18px; height: 18px; display: flex; align-items: center;
+    justify-content: center; border-radius: 50%; font-weight: bold;
 }
 
 /* =========================================
-   4. SEÇÃO HERO (BANNER PRINCIPAL)
+   4. SIDEBAR DO CARRINHO (NOVO)
+   ========================================= */
+.cart-sidebar {
+    position: fixed; top: 0; right: -450px; /* Escondido */
+    width: 350px; height: 100%; background: white;
+    box-shadow: -5px 0 30px rgba(0,0,0,0.1); z-index: 3000;
+    transition: 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    display: flex; flex-direction: column;
+}
+.cart-sidebar.open { right: 0; }
+
+.overlay-sidebar {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5); z-index: 2999; display: none;
+    opacity: 0; transition: 0.3s;
+}
+.overlay-sidebar.open { display: block; opacity: 1; }
+
+.sidebar-header {
+    padding: 20px; border-bottom: 1px solid #eee; display: flex;
+    justify-content: space-between; align-items: center; background: var(--pink-soft);
+}
+.sidebar-content { flex: 1; overflow-y: auto; padding: 20px; }
+.cart-item-side {
+    display: flex; gap: 10px; margin-bottom: 15px; border-bottom: 1px solid #f9f9f9; padding-bottom: 10px;
+}
+.sidebar-footer { padding: 20px; border-top: 1px solid #eee; background: white; }
+
+.subtotal { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 15px; font-size: 1.1rem; }
+.btn-checkout {
+    width: 100%; padding: 15px; background: var(--dark); color: var(--gold);
+    border: none; font-weight: 700; cursor: pointer; text-transform: uppercase;
+}
+.btn-checkout:hover { background: var(--pink-vibrant); color: white; }
+.close-sidebar { cursor: pointer; font-size: 1.5rem; font-weight: bold; }
+
+/* =========================================
+   5. HERO E CONTEÚDO PRINCIPAL
    ========================================= */
 .hero {
-    background: var(--pink-gradient); 
-    color: white; 
-    padding: 50px 5%; 
-    text-align: center;
-    border-bottom-right-radius: 60px; 
-    border-bottom-left-radius: 60px;
-    margin-bottom: 40px; 
-    box-shadow: 0 10px 30px rgba(255, 77, 141, 0.4);
-    position: relative; 
-    overflow: hidden;
+    background: var(--pink-gradient); color: white; padding: 50px 5%; text-align: center;
+    border-bottom-right-radius: 60px; border-bottom-left-radius: 60px;
+    margin-bottom: 40px; box-shadow: 0 10px 30px rgba(255, 77, 141, 0.4);
+    position: relative; overflow: hidden;
 }
-
-/* Efeito de pulso no fundo do banner */
 .hero::before {
-    content: ''; 
-    position: absolute; 
-    top: -50%; left: -50%; 
-    width: 200%; height: 200%;
+    content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
     background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
     animation: pulse 5s infinite;
 }
-@keyframes pulse { 
-    0% {transform: scale(1);} 
-    50% {transform: scale(1.1);} 
-    100% {transform: scale(1);} 
-}
+@keyframes pulse { 0% {transform: scale(1);} 50% {transform: scale(1.1);} 100% {transform: scale(1);} }
 
 .hero h1 { font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 10px; position: relative; z-index: 1; }
-.hero p { font-size: 1rem; opacity: 0.95; margin-bottom: 25px; position: relative; z-index: 1; }
-
 .hero-btn {
-    background: var(--white); 
-    color: var(--pink-vibrant); 
-    padding: 15px 35px;
-    border-radius: 30px; 
-    border: none; 
-    font-weight: 800; 
-    text-transform: uppercase;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.15); 
-    cursor: pointer; 
-    position: relative; z-index: 1;
+    background: var(--white); color: var(--pink-vibrant); padding: 15px 35px;
+    border-radius: 30px; border: none; font-weight: 800; text-transform: uppercase;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15); cursor: pointer; position: relative; z-index: 1;
     transition: 0.3s;
 }
-.hero-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+.hero-btn:hover { transform: translateY(-3px); }
 
-/* =========================================
-   5. COMPONENTES DE UI (CARROSSEL E GRID)
-   ========================================= */
 .section-title {
-    text-align: center; 
-    margin: 40px 0 20px; 
-    color: var(--pink-vibrant);
-    font-family: 'Playfair Display'; 
-    font-size: 1.8rem; 
-    position: relative;
+    text-align: center; margin: 40px 0 20px; color: var(--pink-vibrant);
+    font-family: 'Playfair Display'; font-size: 1.8rem;
 }
-.section-title span { 
-    background: var(--gold); 
-    color: white; 
-    padding: 2px 10px; 
-    font-size: 0.8rem; 
-    border-radius: 4px; 
-    vertical-align: middle; 
-    margin-left: 10px; 
-    font-family: 'Montserrat'; 
-    letter-spacing: 1px; 
-}
+.section-title span { background: var(--gold); color: white; padding: 2px 10px; font-size: 0.8rem; border-radius: 4px; vertical-align: middle; margin-left: 10px; font-family: 'Montserrat'; }
 
-/* --- Carrossel Horizontal --- */
-.carousel-wrap { position: relative; padding: 20px 0; background: white; margin-bottom: 40px; box-shadow: 0 5px 20px rgba(0,0,0,0.03); }
+/* Carrossel */
+.carousel-wrap { position: relative; padding: 20px 0; background: white; margin-bottom: 40px; }
 .carousel-track { display: flex; gap: 20px; overflow-x: auto; scrollbar-width: none; padding: 0 5%; scroll-behavior: smooth; }
 .carousel-track::-webkit-scrollbar { display: none; }
-
 .c-item {
-    min-width: 160px; 
-    background: var(--white); 
-    border: 1px solid #ffe0ea;
-    border-radius: 15px; 
-    padding: 15px; 
-    text-align: center; 
-    cursor: pointer;
-    transition: 0.3s; 
-    position: relative;
+    min-width: 160px; background: var(--white); border: 1px solid #ffe0ea;
+    border-radius: 15px; padding: 15px; text-align: center; cursor: pointer; transition: 0.3s;
 }
-.c-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-card); border-color: var(--pink-vibrant); }
+.c-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-card); }
 .c-item img { width: 100px; height: 100px; object-fit: contain; }
-
-/* Setas do carrossel */
 .arrow-btn {
     position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;
     width: 40px; height: 40px; border-radius: 50%; border: none;
     background: var(--pink-vibrant); color: white; cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2); font-size: 1.2rem; transition: 0.3s;
 }
-.arrow-btn:hover { background: var(--pink-deep); }
-.arr-left { left: 10px; }
-.arr-right { right: 10px; }
+.arr-left { left: 10px; } .arr-right { right: 10px; }
 
-/* --- Grid de Produtos --- */
+/* Grid de Produtos */
 .grid-container { padding: 0 5% 50px; scroll-margin-top: 100px; }
 .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
-
-/* Responsividade para telas maiores */
 @media(min-width: 768px) { .grid { grid-template-columns: repeat(4, 1fr); gap: 30px; } }
 
-/* Cards de Produto */
 .card {
     background: white; border-radius: 20px; padding: 15px; text-align: center;
-    position: relative; overflow: hidden; transition: 0.3s; border: 1px solid transparent;
+    position: relative; transition: 0.3s; border: 1px solid transparent;
 }
 .card:hover { border-color: var(--gold); box-shadow: var(--shadow-card); }
-
 .badge-off {
     position: absolute; top: 10px; left: 10px; background: var(--pink-vibrant);
-    color: white; font-size: 0.7rem; padding: 4px 8px; border-radius: 4px; font-weight: 700; z-index: 5;
+    color: white; font-size: 0.7rem; padding: 4px 8px; border-radius: 4px; font-weight: 700;
 }
-.card img { width: 100%; height: 140px; object-fit: contain; margin-bottom: 10px; transition: 0.3s; }
-.card:hover img { transform: scale(1.05); }
-
-.card-title { font-size: 0.85rem; height: 40px; overflow: hidden; margin-bottom: 5px; font-weight: 600; color: #444; }
+.card img { width: 100%; height: 140px; object-fit: contain; margin-bottom: 10px; }
+.card-title { font-size: 0.85rem; height: 40px; overflow: hidden; margin-bottom: 5px; font-weight: 600; }
 .card-price { color: var(--pink-vibrant); font-weight: 800; font-size: 1.1rem; }
-
 .btn-buy {
     width: 100%; padding: 12px; margin-top: 10px; background: var(--dark);
     color: var(--gold); border: none; border-radius: 8px; font-weight: 700; cursor: pointer;
-    transition: 0.3s; text-transform: uppercase; font-size: 0.8rem;
+    transition: 0.3s;
 }
 .btn-buy:hover { background: var(--pink-vibrant); color: white; }
 
 /* =========================================
-   6. MODAIS (POP-UPS)
-   Inclui o modal de visualização de produto e o checkout
+   6. MODAIS (PRODUTO, PROMOÇÃO E CHECKOUT)
    ========================================= */
 .modal-bg {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); z-index: 2000;
-    display: none; /* Oculto por padrão */
-    justify-content: center; align-items: center;
+    background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); z-index: 3500;
+    display: none; justify-content: center; align-items: center;
 }
 
-/* Modal do Produto */
+/* Modal Produto */
 .product-modal {
     background: white; width: 90%; max-width: 850px; border-radius: 25px;
-    overflow: hidden; position: relative; display: flex; flex-direction: column;
-    max-height: 90vh; overflow-y: auto; animation: popUp 0.4s ease;
+    display: flex; flex-direction: column; overflow: hidden;
 }
-@keyframes popUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-
 @media(min-width: 768px) { .product-modal { flex-direction: row; } }
-
-.pm-img-side { background: var(--pink-soft); padding: 40px; display: flex; justify-content: center; align-items: center; flex: 1; }
-.pm-img-side img { max-width: 100%; max-height: 300px; mix-blend-mode: multiply; }
-.pm-info-side { padding: 40px; flex: 1.2; display: flex; flex-direction: column; justify-content: center; background: white; }
-.pm-title { font-family: 'Playfair Display'; font-size: 2rem; margin-bottom: 10px; color: var(--dark); line-height: 1.1; }
-.pm-desc { font-size: 0.95rem; color: #666; margin-bottom: 25px; line-height: 1.6; }
-.pm-price { font-size: 2.2rem; color: var(--pink-vibrant); font-weight: 800; margin-bottom: 25px; }
-
-/* Botões do Modal */
+.pm-img-side { background: var(--pink-soft); padding: 40px; flex: 1; display: flex; justify-content: center; align-items: center; }
+.pm-info-side { padding: 40px; flex: 1.2; background: white; }
 .btn-modal-add {
     background: var(--gold-gradient); color: var(--dark); border: none; padding: 18px;
-    border-radius: 50px; font-weight: 800; font-size: 1.1rem; cursor: pointer; 
-    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4); transition: 0.3s; width: 100%;
+    border-radius: 50px; font-weight: 800; cursor: pointer; width: 100%;
 }
-.btn-modal-add:hover { transform: scale(1.02); filter: brightness(1.1); }
+.close-m { position: absolute; top: 15px; right: 20px; font-size: 2rem; cursor: pointer; z-index: 10; color: #333;}
 
-.close-m { 
-    position: absolute; top: 20px; right: 20px; font-size: 2rem; 
-    cursor: pointer; color: var(--dark); z-index: 10; opacity: 0.5; transition: 0.3s;
-}
-.close-m:hover { opacity: 1; transform: rotate(90deg); }
-
-/* Modal de Checkout (Pagamento) */
-.checkout-box {
-    background: white; width: 95%; max-width: 500px; border-radius: 20px; padding: 30px;
-    position: relative; max-height: 90vh; overflow-y: auto;
+/* Modal Simples (Rastreio/Trocas) */
+.simple-modal {
+    background: white; padding: 30px; border-radius: 15px; width: 90%; max-width: 400px;
+    position: relative; text-align: center;
 }
 
-/* Inputs e Botões Genéricos */
-.input-jh { width: 100%; padding: 14px; border: 1px solid #ddd; border-radius: 12px; margin-bottom: 15px; outline: none; transition: 0.3s; }
-.input-jh:focus { border-color: var(--pink-vibrant); }
-.btn-pink { background: var(--pink-vibrant); color: white; padding: 16px; width: 100%; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; margin-top: 10px; transition: 0.3s; }
-.btn-pink:hover { background: var(--pink-deep); }
+/* Modal Promoção Relâmpago */
+.promo-box {
+    background: linear-gradient(135deg, #fff 0%, #fff0f5 100%); width: 95%; max-width: 600px;
+    padding: 30px; border-radius: 20px; position: relative; text-align: center;
+    border: 2px solid var(--gold); box-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
+    animation: popUp 0.5s ease;
+}
+@keyframes popUp { from {transform: scale(0.8); opacity: 0;} to {transform: scale(1); opacity: 1;} }
+.promo-title { color: var(--pink-vibrant); font-family: 'Playfair Display'; margin-bottom: 10px; animation: pulse 1s infinite; }
+.promo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
+@media(max-width: 600px) { .promo-grid { grid-template-columns: 1fr; } }
 
-/* Utilitários */
+/* Checkout e Auth */
+.checkout-box { background: white; width: 95%; max-width: 500px; border-radius: 20px; padding: 30px; position: relative; max-height: 90vh; overflow-y: auto; }
+.input-jh { width: 100%; padding: 14px; border: 1px solid #ddd; border-radius: 12px; margin-bottom: 15px; outline: none; }
+.btn-pink { background: var(--pink-vibrant); color: white; padding: 16px; width: 100%; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; margin-top: 10px; }
 .hidden { display: none; }
 .error-msg { color: red; font-size: 0.8rem; margin-bottom: 10px; display: none; text-align: center; }

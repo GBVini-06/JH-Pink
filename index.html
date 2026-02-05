@@ -13,21 +13,30 @@
 
     <div class="promo-strip">FRETE GRÁTIS EM COMPRAS ACIMA DE R$ 299 | PARCELE EM ATÉ 10X SEM JUROS</div>
 
-    <header>
-        <div class="header-main">
-            <a href="#" class="logo">JH <span>Pink</span></a>
+ <header>
+    <div class="header-top">
+        <nav class="nav-links">
+            <a href="#" onclick="openTrackModal()">Rastrear Pedido</a>
+            <a href="#" onclick="openExchangeModal()">Trocas e Devoluções</a>
+        </nav>
+    </div>
+
+    <div class="header-main">
+        <a href="#" class="logo">JH <span>Pink</span></a>
+        
+        <div class="header-actions">
+            <div class="search-bar-mini">
+                <input type="text" id="search" placeholder="Buscar...">
+                <i class="fas fa-search"></i>
+            </div>
             
-            <div class="cart-btn-wrap" onclick="openCheckout()">
+            <div class="cart-btn-wrap" onclick="toggleCartSidebar()">
                 <i class="fas fa-shopping-bag"></i>
                 <div class="cart-badge" id="cart-count">0</div>
             </div>
         </div>
-        
-        <div class="search-bar">
-            <input type="text" class="search-input" id="search" placeholder="O que você deseja hoje?">
-            <i class="fas fa-search" style="position: absolute; right: 20px; top: 13px; color: var(--pink-vibrant);"></i>
-        </div>
-    </header>
+    </div>
+</header>
 
     <div class="hero">
         <h1>Revele Seu Brilho.</h1>
@@ -126,6 +135,53 @@
             </div>
         </div>
     </div>
+    <div class="cart-sidebar" id="cartSidebar">
+    <div class="sidebar-header">
+        <h3>Sua Sacola</h3>
+        <span class="close-sidebar" onclick="toggleCartSidebar()">&times;</span>
+    </div>
+    <div class="sidebar-content" id="cartSidebarList">
+        <p style="text-align:center; margin-top:50px; color:#999">Sua sacola está vazia.</p>
+    </div>
+    <div class="sidebar-footer">
+        <div class="subtotal">
+            <span>Subtotal:</span>
+            <span id="sidebarTotal">R$ 0,00</span>
+        </div>
+        <button class="btn-checkout" onclick="proceedToCheckout()">FINALIZAR COMPRA</button>
+    </div>
+</div>
+<div class="overlay-sidebar" id="overlaySidebar" onclick="toggleCartSidebar()"></div>
+
+<div class="modal-bg" id="promoModal">
+    <div class="promo-box">
+        <span class="close-m" onclick="closePromo()">&times;</span>
+        <h2 class="promo-title">⚡ OFERTA RELÂMPAGO ⚡</h2>
+        <p>Aproveite descontos exclusivos apenas nesta sessão!</p>
+        <div class="promo-grid" id="promoGrid"></div>
+    </div>
+</div>
+
+<div class="modal-bg" id="trackModal" onclick="if(event.target===this) closeTrack()">
+    <div class="simple-modal">
+        <span class="close-m" onclick="closeTrack()">&times;</span>
+        <h3>Rastrear Pedido</h3>
+        <p style="margin-bottom:15px; font-size:0.9rem">Digite o código enviado para seu e-mail.</p>
+        <input type="text" class="input-jh" placeholder="Ex: JH123456BR">
+        <button class="btn-pink" onclick="alert('Rastreando...')">BUSCAR</button>
+    </div>
+</div>
+
+<div class="modal-bg" id="exchangeModal" onclick="if(event.target===this) closeExchange()">
+    <div class="simple-modal">
+        <span class="close-m" onclick="closeExchange()">&times;</span>
+        <h3>Solicitar Troca</h3>
+        <input type="text" class="input-jh" placeholder="Número do Pedido">
+        <input type="email" class="input-jh" placeholder="Seu E-mail">
+        <textarea class="input-jh" rows="3" placeholder="Motivo da troca"></textarea>
+        <button class="btn-pink" onclick="alert('Solicitação enviada!')">ENVIAR SOLICITAÇÃO</button>
+    </div>
+</div>
 
     <script src="script.js"></script>
 </body>

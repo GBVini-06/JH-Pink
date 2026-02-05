@@ -1,187 +1,256 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JH Pink | Beauty & Luxury</title>
+    <title>JH Pink | Luxury Makeup Store</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="promo-strip">FRETE GRÁTIS EM COMPRAS ACIMA DE R$ 299 | PARCELE EM ATÉ 10X SEM JUROS</div>
-
- <header>
-    <div class="header-top">
-        <nav class="nav-links">
-            <a href="#" onclick="openTrackModal()">Rastrear Pedido</a>
-            <a href="#" onclick="openExchangeModal()">Trocas e Devoluções</a>
-        </nav>
+    <div class="promo-strip">
+        FRETE GRÁTIS PARA TODO O BRASIL EM COMPRAS ACIMA DE R$ 299
     </div>
 
-    <div class="header-main">
-        <a href="#" class="logo">JH <span>Pink</span></a>
-        
-        <div class="header-actions">
-            <div class="search-bar-mini">
-                <input type="text" id="search" placeholder="Buscar...">
-                <i class="fas fa-search"></i>
-            </div>
+    <header>
+        <div class="header-top">
+            <nav class="nav-links">
+                <a href="#" onclick="openTrackModal()">Rastrear Pedido</a>
+                <a href="#" onclick="openExchangeModal()">Trocas e Devoluções</a>
+            </nav>
+        </div>
+    
+        <div class="header-main">
+            <a href="#" class="logo">JH <span>Pink</span></a>
             
-            <div class="cart-btn-wrap" onclick="toggleCartSidebar()">
-                <i class="fas fa-shopping-bag"></i>
-                <div class="cart-badge" id="cart-count">0</div>
+            <div class="header-actions">
+                <div class="search-bar-mini">
+                    <input type="text" id="search" placeholder="Buscar produto...">
+                    <i class="fas fa-search"></i>
+                </div>
+                
+                <div class="cart-btn-wrap" onclick="toggleCartSidebar()">
+                    <i class="fas fa-shopping-bag"></i>
+                    <div class="cart-badge" id="cart-count">0</div>
+                </div>
             </div>
         </div>
-    </div>
-</header>
+    </header>
 
-    <div class="hero">
-        <h1>Revele Seu Brilho.</h1>
-        <p>Produtos desenvolvidos para quem não aceita menos que a perfeição.</p>
-        <button class="hero-btn" onclick="scrollToCollection()">Ver Lançamentos</button>
-    </div>
+    <section class="hero">
+        <h1>Realce Sua Beleza Natural</h1>
+        <p style="margin-bottom:20px; font-size:1.1rem; opacity:0.9">Maquiagem profissional com acabamento de luxo.</p>
+        <button class="hero-btn" onclick="scrollToCollection()">VER COLEÇÃO</button>
+    </section>
 
-    <h2 class="section-title">Os Queridinhos <span>BEST SELLERS</span></h2>
     <div class="carousel-wrap">
-        <button class="arrow-btn arr-left" onclick="scrollC(-1)"><i class="fas fa-chevron-left"></i></button>
+        <h2 class="section-title">Mais <span>Vendidos</span></h2>
+        <button class="arrow-btn arr-left" onclick="scrollC(-1)">&#10094;</button>
         <div class="carousel-track" id="track">
             </div>
-        <button class="arrow-btn arr-right" onclick="scrollC(1)"><i class="fas fa-chevron-right"></i></button>
+        <button class="arrow-btn arr-right" onclick="scrollC(1)">&#10095;</button>
     </div>
 
     <div class="grid-container" id="collection-target">
-        <h2 class="section-title">Coleção Exclusiva</h2>
+        <h2 class="section-title">Coleção <span>Exclusiva</span></h2>
         <div class="grid" id="grid">
             </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            
+            <div class="footer-col">
+                <h3>Sobre a JH Pink</h3>
+                <p>Nascemos do desejo de entregar luxo e exclusividade. Nossos produtos são curados para realçar o brilho que já existe em você.</p>
+                <div class="social-icons">
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-tiktok"></i>
+                </div>
+            </div>
+    
+            <div class="footer-col">
+                <h3>Institucional</h3>
+                <ul>
+                    <li><a href="#" onclick="openInfoModal('about')">Quem Somos</a></li>
+                    <li><a href="#" onclick="openInfoModal('track')">Política de Frete</a></li>
+                    <li><a href="#" onclick="openInfoModal('exchange')">Política de Trocas</a></li>
+                </ul>
+            </div>
+    
+            <div class="footer-col">
+                <h3>Fale Conosco</h3>
+                <a href="https://wa.me/5511999999999" target="_blank" class="contact-link">
+                    <i class="fab fa-whatsapp"></i> (11) 99999-9999
+                </a>
+                <a href="mailto:contato@jhpink.com.br" class="contact-link">
+                    <i class="far fa-envelope"></i> contato@jhpink.com
+                </a>
+                <p style="margin-top:10px; font-size:0.8rem; color:#888">Seg. a Sex. das 9h às 18h</p>
+            </div>
+    
+            <div class="footer-col">
+                <h3>Formas de Pagamento</h3>
+                <div class="payment-icons">
+                    <i class="fab fa-cc-visa" title="Visa"></i>
+                    <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+                    <i class="fab fa-cc-amex" title="Amex"></i>
+                    <i class="fas fa-barcode" title="Boleto"></i>
+                    <div class="pix-icon" title="PIX">
+                        <i class="fab fa-pix"></i> PIX
+                    </div>
+                </div>
+                <p style="font-size:0.75rem; color:#888; margin-top:10px">Ambiente 100% Seguro <i class="fas fa-lock"></i></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 JH Pink Luxury. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="sidebar-header">
+            <h3>Sua Sacola</h3>
+            <span class="close-sidebar" onclick="toggleCartSidebar()">&times;</span>
+        </div>
+        <div class="sidebar-content" id="cartSidebarList">
+            </div>
+        <div class="sidebar-footer">
+            <div class="subtotal">
+                <span>Subtotal:</span>
+                <span id="sidebarTotal">R$ 0,00</span>
+            </div>
+            <button class="btn-checkout" onclick="proceedToCheckout()">FINALIZAR COMPRA</button>
+        </div>
+    </div>
+    <div class="overlay-sidebar" id="overlaySidebar" onclick="toggleCartSidebar()"></div>
+
+    <div class="modal-bg" id="promoModal">
+        <div class="promo-box">
+            <span class="close-m" onclick="closePromo()">&times;</span>
+            <h2 class="promo-title">⚡ OFERTA RELÂMPAGO ⚡</h2>
+            <p>Aproveite descontos exclusivos apenas nesta sessão!</p>
+            <div class="promo-grid" id="promoGrid"></div>
+        </div>
+    </div>
+
+    <div class="modal-bg" id="trackModal" onclick="if(event.target===this) closeTrack()">
+        <div class="simple-modal">
+            <span class="close-m" onclick="closeTrack()">&times;</span>
+            <h3>Rastrear Pedido</h3>
+            <p style="margin-bottom:15px; font-size:0.9rem">Digite o código enviado para seu e-mail.</p>
+            <input type="text" class="input-jh" placeholder="Ex: JH123456BR">
+            <button class="btn-pink" onclick="alert('Buscando informações do correio...')">LOCALIZAR</button>
+            <p style="margin-top:15px; font-size:0.8rem; cursor:pointer; text-decoration:underline; color:#666;" onclick="closeTrack(); openInfoModal('track')">
+                Ver prazos de entrega por estado
+            </p>
+        </div>
+    </div>
+
+    <div class="modal-bg" id="exchangeModal" onclick="if(event.target===this) closeExchange()">
+        <div class="simple-modal">
+            <span class="close-m" onclick="closeExchange()">&times;</span>
+            <h3>Solicitar Troca</h3>
+            <p style="margin-bottom:15px; font-size:0.9rem">Preencha para iniciarmos o processo.</p>
+            <input type="text" class="input-jh" placeholder="Número do Pedido">
+            <input type="email" class="input-jh" placeholder="Seu E-mail">
+            <textarea class="input-jh" rows="3" placeholder="Motivo da troca (Ex: Tamanho, Defeito...)"></textarea>
+            <button class="btn-pink" onclick="alert('Solicitação enviada! Responderemos em 24h.')">ENVIAR SOLICITAÇÃO</button>
+        </div>
+    </div>
+
+    <div class="modal-bg" id="infoModal" onclick="if(event.target===this) closeInfoModal()">
+        <div class="info-box">
+            <span class="close-m" onclick="closeInfoModal()">&times;</span>
+            <h2 id="info-title" class="info-title">Título</h2>
+            <div id="info-content" class="info-content">
+                </div>
+            <button class="btn-pink" onclick="closeInfoModal()" style="width: auto; padding: 10px 30px; margin-top: 20px;">ENTENDI</button>
+        </div>
     </div>
 
     <div class="modal-bg" id="prodModal" onclick="if(event.target===this) closeP()">
         <div class="product-modal">
             <span class="close-m" onclick="closeP()">&times;</span>
             <div class="pm-img-side">
-                <img id="pm-img" src="">
+                <img id="pm-img" src="" alt="Produto" style="width:100%; max-height:300px; object-fit:contain;">
             </div>
             <div class="pm-info-side">
-                <h2 id="pm-title" class="pm-title"></h2>
-                <div style="margin-bottom:15px; color:var(--gold); font-size:1.1rem">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <p id="pm-desc" class="pm-desc"></p>
-                <div id="pm-price" class="pm-price"></div>
-                <button class="btn-modal-add" id="pm-btn">ADICIONAR À SACOLA</button>
+                <h2 id="pm-title" style="margin-bottom:10px; font-family:'Playfair Display'"></h2>
+                <h3 id="pm-price" style="color:var(--pink-vibrant); font-size:1.5rem; margin-bottom:20px;"></h3>
+                <p id="pm-desc" style="color:#666; margin-bottom:30px; line-height:1.6"></p>
+                <button id="pm-btn" class="btn-modal-add">ADICIONAR À SACOLA</button>
             </div>
         </div>
     </div>
 
-    <div class="modal-bg" id="checkModal" onclick="if(event.target===this) closeC()">
+    <div class="modal-bg" id="checkModal">
         <div class="checkout-box">
             <span class="close-m" onclick="closeC()">&times;</span>
-            <h2 style="font-family:'Playfair Display'; color:var(--pink-vibrant); margin-bottom:20px; text-align:center;">Finalizar Compra</h2>
             
-            <div id="cartList" style="margin-bottom:20px; max-height:150px; overflow-y:auto; border-bottom:1px solid #eee; padding-bottom:10px"></div>
-            <h3 id="totalVal" style="text-align:right; margin-bottom:25px; color:var(--dark)">Total: R$ 0,00</h3>
+            <div style="text-align:center; margin-bottom:20px;">
+                <h2 style="font-family:'Playfair Display'; color:var(--dark)">Finalizar Compra</h2>
+            </div>
+            
+            <div id="cartList"></div>
+            <h3 id="totalVal" style="text-align:right; margin-bottom:20px; color:var(--pink-vibrant)"></h3>
 
             <div id="flow-auth">
-                <div style="display:flex; gap:10px; margin-bottom:20px;">
-                    <button id="btn-login-tab" onclick="setTab('login')" style="flex:1; padding:10px; border:none; background:var(--pink-vibrant); color:white; border-radius:8px; font-weight:600; cursor:pointer">Login</button>
-                    <button id="btn-reg-tab" onclick="setTab('reg')" style="flex:1; padding:10px; border:none; background:#f0f0f0; color:#666; border-radius:8px; font-weight:600; cursor:pointer">Cadastrar</button>
+                <div style="display:flex; margin-bottom:20px; border-bottom:1px solid #eee;">
+                    <div id="btn-login-tab" onclick="setTab('login')" style="flex:1; padding:10px; text-align:center; cursor:pointer; font-weight:bold; background:var(--pink-vibrant); color:white;">LOGIN</div>
+                    <div id="btn-reg-tab" onclick="setTab('reg')" style="flex:1; padding:10px; text-align:center; cursor:pointer; font-weight:bold; background:#f0f0f0;">CADASTRO</div>
                 </div>
-                
+
                 <div id="f-login">
-                    <p class="error-msg" id="login-error">E-mail ou senha incorretos. Cadastre-se se for sua primeira vez!</p>
-                    <input type="email" id="l-email" placeholder="Seu E-mail" class="input-jh">
-                    <input type="password" id="l-pass" placeholder="Sua Senha" class="input-jh">
+                    <input type="email" id="l-email" class="input-jh" placeholder="Seu E-mail">
+                    <input type="password" id="l-pass" class="input-jh" placeholder="Sua Senha">
+                    <div id="login-error" class="error-msg">Dados incorretos.</div>
                     <button class="btn-pink" onclick="loginAndPay()">ENTRAR E PAGAR</button>
                 </div>
-                
+
                 <div id="f-reg" class="hidden">
-                    <input type="text" id="r-name" placeholder="Nome Completo" class="input-jh">
-                    <input type="email" id="r-email" placeholder="E-mail" class="input-jh">
-                    <input type="password" id="r-pass" placeholder="Criar Senha" class="input-jh">
-                    <button class="btn-pink" onclick="regUser()">CRIAR CONTA</button>
+                    <input type="text" id="r-name" class="input-jh" placeholder="Nome Completo">
+                    <input type="email" id="r-email" class="input-jh" placeholder="Seu Melhor E-mail">
+                    <input type="password" id="r-pass" class="input-jh" placeholder="Crie uma Senha">
+                    <button class="btn-pink" onclick="regUser()">CADASTRAR</button>
                 </div>
             </div>
 
             <div id="flow-pay" class="hidden">
-                <h4 style="margin-bottom:15px; color:#666">Escolha como pagar:</h4>
+                <div style="background:#e8f5e9; color:#2e7d32; padding:10px; border-radius:5px; margin-bottom:15px; text-align:center;">
+                    Login realizado com sucesso! <span style="font-size:0.8rem; text-decoration:underline; cursor:pointer; color:#1b5e20" onclick="backToAuth()">(Trocar conta)</span>
+                </div>
+                
+                <h3>Pagamento</h3>
                 <select id="pay-method" class="input-jh" onchange="chkPay()">
                     <option value="card">Cartão de Crédito</option>
-                    <option value="card">Cartão de Débito</option>
-                    <option value="pix">PIX (Aprovação Imediata)</option>
+                    <option value="pix">PIX (5% de Desconto)</option>
                 </select>
-                
+
                 <div id="card-dets">
-                    <div style="background:#333; color:#fff; padding:15px; border-radius:10px; margin-bottom:15px; font-size:0.8rem; letter-spacing:2px">
-                        JH PINK CARD <br> <span style="font-size:1.2rem; display:block; margin:10px 0">**** **** **** ****</span>
-                    </div>
                     <input type="text" class="input-jh" placeholder="Número do Cartão">
-                    <div style="display:flex; gap:10px">
-                        <input type="text" class="input-jh" placeholder="Validade (MM/AA)">
+                    <div style="display:flex; gap:10px;">
+                        <input type="text" class="input-jh" placeholder="MM/AA">
                         <input type="text" class="input-jh" placeholder="CVV">
                     </div>
-                    <input type="text" class="input-jh" placeholder="Nome Impresso">
+                    <input type="text" class="input-jh" placeholder="Nome no Cartão">
                 </div>
-                
-                <div id="pix-dets" class="hidden" style="text-align:center; padding:20px; background:#fff0f5; border-radius:10px; margin-bottom:20px; border:1px dashed var(--pink-vibrant)">
-                    <i class="fas fa-qrcode fa-3x" style="color:var(--pink-vibrant); margin-bottom:10px"></i>
-                    <p style="font-size:0.9rem; font-weight:700; color:var(--pink-vibrant)">JH-PINK-QR-CODE-TESTE</p>
+
+                <div id="pix-dets" class="hidden" style="text-align:center; padding:20px; background:#f9f9f9; border-radius:10px;">
+                    <i class="fas fa-qrcode" style="font-size:3rem; color:#333;"></i>
+                    <p style="margin-top:10px; font-size:0.8rem;">O código QR será gerado ao confirmar.</p>
                 </div>
-                
-                <button class="btn-pink" style="background:var(--gold-gradient); color:#222" onclick="finish()">FINALIZAR PEDIDO</button>
-                <p style="text-align:center; margin-top:10px; font-size:0.8rem; color:#999; cursor:pointer" onclick="backToAuth()">Voltar</p>
+
+                <button class="btn-pink" style="margin-top:20px; background:var(--gold); color:var(--dark);" onclick="finish()">CONFIRMAR PEDIDO</button>
             </div>
         </div>
     </div>
-    <div class="cart-sidebar" id="cartSidebar">
-    <div class="sidebar-header">
-        <h3>Sua Sacola</h3>
-        <span class="close-sidebar" onclick="toggleCartSidebar()">&times;</span>
-    </div>
-    <div class="sidebar-content" id="cartSidebarList">
-        <p style="text-align:center; margin-top:50px; color:#999">Sua sacola está vazia.</p>
-    </div>
-    <div class="sidebar-footer">
-        <div class="subtotal">
-            <span>Subtotal:</span>
-            <span id="sidebarTotal">R$ 0,00</span>
-        </div>
-        <button class="btn-checkout" onclick="proceedToCheckout()">FINALIZAR COMPRA</button>
-    </div>
-</div>
-<div class="overlay-sidebar" id="overlaySidebar" onclick="toggleCartSidebar()"></div>
-
-<div class="modal-bg" id="promoModal">
-    <div class="promo-box">
-        <span class="close-m" onclick="closePromo()">&times;</span>
-        <h2 class="promo-title">⚡ OFERTA RELÂMPAGO ⚡</h2>
-        <p>Aproveite descontos exclusivos apenas nesta sessão!</p>
-        <div class="promo-grid" id="promoGrid"></div>
-    </div>
-</div>
-
-<div class="modal-bg" id="trackModal" onclick="if(event.target===this) closeTrack()">
-    <div class="simple-modal">
-        <span class="close-m" onclick="closeTrack()">&times;</span>
-        <h3>Rastrear Pedido</h3>
-        <p style="margin-bottom:15px; font-size:0.9rem">Digite o código enviado para seu e-mail.</p>
-        <input type="text" class="input-jh" placeholder="Ex: JH123456BR">
-        <button class="btn-pink" onclick="alert('Rastreando...')">BUSCAR</button>
-    </div>
-</div>
-
-<div class="modal-bg" id="exchangeModal" onclick="if(event.target===this) closeExchange()">
-    <div class="simple-modal">
-        <span class="close-m" onclick="closeExchange()">&times;</span>
-        <h3>Solicitar Troca</h3>
-        <input type="text" class="input-jh" placeholder="Número do Pedido">
-        <input type="email" class="input-jh" placeholder="Seu E-mail">
-        <textarea class="input-jh" rows="3" placeholder="Motivo da troca"></textarea>
-        <button class="btn-pink" onclick="alert('Solicitação enviada!')">ENVIAR SOLICITAÇÃO</button>
-    </div>
-</div>
 
     <script src="script.js"></script>
 </body>

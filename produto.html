@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Produto | JH Pink</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="produto.css">
+</head>
+<body>
+
+   <header>
+    <div class="top-bar">
+        <p>Garanta agora o seu kit <strong>we favorito!</strong></p>
+    </div>
+
+    <div class="main-header">
+        <div class="container header-content">
+            <div class="logo">
+                <a href="index.html">
+                    <h1>JH Pink</h1>
+                </a>
+            </div>
+
+            <div class="search-bar">
+                <form action="#">
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <input type="text" placeholder="Digite aqui o que procura...">
+                </form>
+            </div>
+
+            <div class="header-actions">
+                <a href="#" class="icon-link">
+                    <i class="fa-solid fa-truck"></i> Rastreio
+                </a>
+                <a href="#" class="icon-link">
+                    <i class="fa-solid fa-rotate"></i> Trocas
+                </a>
+                <a href="#" class="icon-btn">
+                    <i class="fa-regular fa-user"></i>
+                </a>
+                <a href="#" class="icon-btn cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="badge">0</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <main class="product-page-container">
+        
+        <div class="pp-gallery">
+            <div class="pp-main-img-wrap">
+                <img id="main-image" src="" alt="Imagem do Produto">
+            </div>
+        </div>
+
+        <div class="pp-info">
+            <div class="breadcrumbs">Home > Perfumaria > Feminino</div>
+            
+            <h1 id="pp-name" class="pp-title">Carregando Produto...</h1>
+            <p class="pp-subtitle">A elegância e o mistério em uma essência única.</p>
+
+            <div class="pp-price-container">
+                <span class="old-price" id="pp-old-price">R$ 0,0</span>
+                <div class="current-price-row">
+                    <span class="currency">R$</span>
+                    <span class="value" id="pp-price">0,0</span>
+                </div>
+                <p class="installments" id="pp-installments">ou 6x sem juros</p>
+            </div>
+
+            <div class="pp-actions-row">
+                <div class="qty-selector">
+                    <button onclick="changeQty(-1)">-</button>
+                    <span id="qty-val">1</span>
+                    <button onclick="changeQty(1)">+</button>
+                </div>
+                <button class="btn-buy-large" id="btn-add-cart">
+                    ADICIONAR AO CARRINHO
+                </button>
+            </div>
+
+            <div class="pp-features-box">
+                <h3>Características</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> Caminho olfativo: Floral Amadeirado</li>
+                    <li><i class="fas fa-check"></i> Longa durabilidade na pele</li>
+                    <li><i class="fas fa-check"></i> Qualidade Premium JH Pink</li>
+                    <li><i class="fas fa-check"></i> Essência marcante e exclusiva</li>
+                </ul>
+            </div>
+
+            <div class="pp-tabs-container">
+                <div class="tab-header">
+                    <span class="active" onclick="switchTab('desc')">Descrição</span>
+                    <span onclick="switchTab('notes')">Notas Olfativas</span>
+                    <span onclick="switchTab('use')">Modo de Usar</span>
+                </div>
+                
+                <div class="tab-body">
+                    <div id="tab-desc" class="tab-content">
+                        Misteriosa, Sexy e Desejada. Este produto representa a mulher que deixa sua marca por onde passa. Uma fragrância sensual que começa com toque de cereja e finaliza com o doce do caramelo.
+                    </div>
+                    <div id="tab-notes" class="tab-content hidden">
+                        <strong>Topo:</strong> Cereja, Frutas Cítricas.<br>
+                        <strong>Corpo:</strong> Gardênia, Mel.<br>
+                        <strong>Fundo:</strong> Caramelo, Patchouli.
+                    </div>
+                    <div id="tab-use" class="tab-content hidden">
+                        Aplique nas áreas quentes do corpo como pescoço, parte interna do cotovelo e pulsos.
+                    </div>
+                </div>
+            </div>
+
+        </div> </main> <section class="reviews-section-full">
+        <div class="reviews-container">
+            <div class="reviews-header-center">
+                <h2>Veja o que estão falando sobre este produto</h2>
+                <div class="rating-badge">
+                    <span class="score">4.8</span>/5
+                    <div class="stars-gold">★★★★★</div>
+                    <p class="count">(124 avaliações de clientes)</p>
+                </div>
+            </div>
+
+            <div id="reviews-list" class="reviews-grid">
+                </div>
+            
+            <div class="load-more-reviews">
+                <span>Carregar mais avaliações</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>JH Pink</h3>
+                <p>Beleza e sofisticação ao seu alcance.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Institucional</h3>
+                <a href="#" onclick="openInfoModal('about')">Quem Somos</a>
+                <a href="#" onclick="openInfoModal('track')">Política de Entrega</a>
+                <a href="#" onclick="openInfoModal('exchange')">Trocas e Devoluções</a>
+            </div>
+            <div class="footer-col">
+                <h3>Formas de Pagamento</h3>
+                <p>Pix, Cartão de Crédito (até 6x) e Boleto.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2025 JH Pink - Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <div class="overlay-sidebar" id="overlaySidebar" onclick="toggleCartSidebar()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Sua Sacola</h3>
+            <span onclick="toggleCartSidebar()">&times;</span>
+        </div>
+        <div id="cartSidebarList" class="cart-list-container"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="sidebarTotal">R$ 0,0</span>
+            </div>
+            <button onclick="proceedToCheckout()">FINALIZAR COMPRA</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="infoModal" onclick="if(event.target===this) closeInfoModal()">
+        <div class="modal-box">
+            <span class="close-modal" onclick="closeInfoModal()">&times;</span>
+            <h2 id="info-title">Título</h2>
+            <div id="info-content">Conteúdo...</div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="checkModal">
+        <div class="modal-box checkout-box">
+            <span class="close-modal" onclick="closeC()">&times;</span>
+            
+            <div id="flow-auth">
+                <div class="tabs-auth">
+                    <button id="btn-login-tab" onclick="setTab('login')" style="background:var(--pink-vibrant); color:#fff">JÁ SOU CLIENTE</button>
+                    <button id="btn-reg-tab" onclick="setTab('reg')">CRIAR CONTA</button>
+                </div>
+                
+                <div id="f-login">
+                    <input type="email" id="l-email" placeholder="Seu E-mail">
+                    <input type="password" id="l-pass" placeholder="Sua Senha">
+                    <p id="login-error" style="color:red; display:none; font-size:0.8rem; margin-bottom:10px"></p>
+                    <button class="btn-full" onclick="loginAndPay()">ENTRAR</button>
+                </div>
+                
+                <div id="f-reg" class="hidden">
+                    <input type="text" id="r-name" placeholder="Nome Completo">
+                    <input type="email" id="r-email" placeholder="Seu E-mail">
+                    <input type="password" id="r-pass" placeholder="Crie uma Senha">
+                    <button class="btn-full" onclick="regUser()">CADASTRAR</button>
+                </div>
+            </div>
+
+            <div id="flow-pay" class="hidden">
+                <h3>Finalizar Pedido</h3>
+                <div id="cartList" style="margin-bottom:15px; font-size:0.9rem"></div>
+                <h2 id="totalVal" style="color:var(--pink-vibrant); text-align:center; margin-bottom:15px"></h2>
+                
+                <label>Forma de Pagamento:</label>
+                <select id="pay-method" onchange="chkPay()" style="width:100%; padding:10px; margin-bottom:10px">
+                    <option value="pix">PIX (5% OFF)</option>
+                    <option value="card">Cartão de Crédito</option>
+                </select>
+                
+                <div id="pix-dets" style="background:#f0fff4; padding:10px; border:1px dashed green; margin-bottom:10px; text-align:center">
+                    <p>Chave PIX: <strong>pagar@jhpink.com.br</strong></p>
+                </div>
+                
+                <div id="card-dets" style="display:none">
+                    <input type="text" placeholder="Número do Cartão" style="width:100%; margin-bottom:5px; padding:8px;">
+                    <div style="display:flex; gap:5px">
+                        <input type="text" placeholder="MM/AA" style="width:50%; padding:8px;">
+                        <input type="text" placeholder="CVV" style="width:50%; padding:8px;">
+                    </div>
+                </div>
+                
+                <button class="btn-full" onclick="finish()" style="margin-top:15px">PAGAR AGORA</button>
+                <p style="text-align:center; margin-top:10px; font-size:0.8rem; cursor:pointer; color:#666" onclick="backToAuth()">Voltar</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="trackModal" onclick="if(event.target===this) closeTrack()">
+        <div class="modal-box">
+            <span class="close-modal" onclick="closeTrack()">&times;</span>
+            <h2>Rastrear Pedido</h2>
+            <input type="text" placeholder="Digite seu código ou CPF" style="width:100%; padding:10px; margin:15px 0; border:1px solid #ddd;">
+            <button class="btn-full" onclick="alert('Rastreio simulado: Em trânsito para sua cidade.')">BUSCAR</button>
+        </div>
+    </div>
+    
+    <div class="modal-overlay" id="exchangeModal" onclick="if(event.target===this) closeExchange()">
+        <div class="modal-box">
+            <span class="close-modal" onclick="closeExchange()">&times;</span>
+            <h2>Trocas e Devoluções</h2>
+            <p>Informe o número do pedido para iniciar o processo.</p>
+            <input type="text" placeholder="Número do Pedido" style="width:100%; padding:10px; margin:15px 0; border:1px solid #ddd;">
+            <button class="btn-full" onclick="alert('Solicitação recebida! Enviaremos instruções por e-mail.')">SOLICITAR TROCA</button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

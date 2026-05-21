@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | JH Pink</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/admin.css">
+</head>
+<body>
+
+<!-- TELA DE LOGIN -->
+<div id="login-screen">
+    <div class="login-box">
+        <h1>JH Pink</h1>
+        <p>Painel Administrativo</p>
+        <div id="login-err">E-mail ou senha incorretos.</div>
+        <input type="email" id="adm-email" placeholder="E-mail do administrador" value="admin@jhpink.com">
+        <input type="password" id="adm-pass" placeholder="Senha" value="admin123">
+        <button class="btn-admin" onclick="adminLogin()">
+            <i class="fas fa-lock" style="margin-right:8px"></i> ENTRAR NO PAINEL
+        </button>
+    </div>
+</div>
+
+<!-- PAINEL ADMIN -->
+<div id="admin-app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-logo">JH <span>Pink</span></div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-label">Principal</div>
+            <div class="nav-item active" onclick="showSection('dashboard')">
+                <i class="fas fa-chart-pie"></i><span>Dashboard</span>
+            </div>
+            <div class="sidebar-label">Loja</div>
+            <div class="nav-item" onclick="showSection('produtos')">
+                <i class="fas fa-box-open"></i><span>Produtos</span>
+            </div>
+            <div class="nav-item" onclick="showSection('pedidos')">
+                <i class="fas fa-shopping-bag"></i><span>Pedidos</span>
+            </div>
+            <div class="nav-item" onclick="showSection('clientes')">
+                <i class="fas fa-users"></i><span>Clientes</span>
+            </div>
+        </nav>
+        <div class="sidebar-bottom">
+            <div class="admin-info">
+                <div class="admin-avatar">A</div>
+                <div>
+                    <div class="admin-name">Administrador</div>
+                    <div class="admin-role">JH Pink</div>
+                </div>
+            </div>
+            <button class="btn-logout" onclick="adminLogout()">
+                <i class="fas fa-sign-out-alt"></i><span>Sair</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="main-content">
+        <div class="topbar">
+            <h2 id="section-title">Dashboard</h2>
+            <div class="topbar-actions">
+                <a href="index.html" target="_blank" style="font-size:0.8rem; color:#888; text-decoration:none; display:flex; align-items:center; gap:6px">
+                    <i class="fas fa-external-link-alt"></i> Ver Loja
+                </a>
+            </div>
+        </div>
+
+        <div class="content-area">
+
+            <!-- DASHBOARD -->
+            <div id="sec-dashboard" class="section active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon pink"><i class="fas fa-box"></i></div>
+                        <div>
+                            <div class="stat-value" id="stat-produtos">—</div>
+                            <div class="stat-label">Produtos Cadastrados</div>
+                        </div>
+                    </div>
+                    <div class="stat-card gold">
+                        <div class="stat-icon gold"><i class="fas fa-users"></i></div>
+                        <div>
+                            <div class="stat-value" id="stat-clientes">—</div>
+                            <div class="stat-label">Clientes Cadastrados</div>
+                        </div>
+                    </div>
+                    <div class="stat-card green">
+                        <div class="stat-icon green"><i class="fas fa-shopping-bag"></i></div>
+                        <div>
+                            <div class="stat-value" id="stat-pedidos">—</div>
+                            <div class="stat-label">Pedidos Realizados</div>
+                        </div>
+                    </div>
+                    <div class="stat-card blue">
+                        <div class="stat-icon blue"><i class="fas fa-tag"></i></div>
+                        <div>
+                            <div class="stat-value" id="stat-promos">—</div>
+                            <div class="stat-label">Produtos em Promoção</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px; flex-wrap:wrap">
+                    <div class="table-card">
+                        <div class="table-header">
+                            <span class="table-title">Produtos por Categoria</span>
+                        </div>
+                        <div class="chart-bar-wrap" id="chart-categorias"></div>
+                    </div>
+                    <div class="table-card">
+                        <div class="table-header">
+                            <span class="table-title">Últimos Clientes</span>
+                        </div>
+                        <table>
+                            <thead><tr><th>Cliente</th><th>E-mail</th><th>Data</th></tr></thead>
+                            <tbody id="tb-ultimos-clientes">
+                                <tr class="loading-row"><td colspan="3"><i class="fas fa-spinner fa-spin"></i> Carregando...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUTOS -->
+            <div id="sec-produtos" class="section">
+                <div class="table-card">
+                    <div class="table-header">
+                        <span class="table-title">Todos os Produtos</span>
+                        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap">
+                            <input type="text" class="table-search" placeholder="🔍 Buscar produto..." oninput="filterProdTable(this.value)">
+                            <button class="btn-new" onclick="openProdModal()">
+                                <i class="fas fa-plus"></i> Novo Produto
+                            </button>
+                        </div>
+                    </div>
+                    <div style="overflow-x:auto">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Nome</th>
+                                    <th>Categoria</th>
+                                    <th>Preço</th>
+                                    <th>Promoção</th>
+                                    <th>Querido</th>
+                                    <th>Top</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tb-produtos">
+                                <tr class="loading-row"><td colspan="8"><i class="fas fa-spinner fa-spin"></i> Carregando produtos...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PEDIDOS -->
+            <div id="sec-pedidos" class="section">
+                <div class="table-card">
+                    <div class="table-header">
+                        <span class="table-title">Histórico de Pedidos</span>
+                        <input type="text" class="table-search" placeholder="🔍 Buscar pedido..." oninput="filterPedTable(this.value)">
+                    </div>
+                    <div style="overflow-x:auto">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Cliente</th>
+                                    <th>Produtos</th>
+                                    <th>Total</th>
+                                    <th>Pagamento</th>
+                                    <th>Status</th>
+                                    <th>Data</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tb-pedidos">
+                                <tr class="loading-row"><td colspan="7"><i class="fas fa-spinner fa-spin"></i> Carregando pedidos...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CLIENTES -->
+            <div id="sec-clientes" class="section">
+                <div class="table-card">
+                    <div class="table-header">
+                        <span class="table-title">Clientes Cadastrados</span>
+                        <input type="text" class="table-search" placeholder="🔍 Buscar cliente..." oninput="filterCliTable(this.value)">
+                    </div>
+                    <div style="overflow-x:auto">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Nome</th>
+                                    <th>E-mail</th>
+                                    <th>Telefone</th>
+                                    <th>Cadastro</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tb-clientes">
+                                <tr class="loading-row"><td colspan="5"><i class="fas fa-spinner fa-spin"></i> Carregando clientes...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /content-area -->
+    </div><!-- /main-content -->
+</div><!-- /admin-app -->
+
+<!-- MODAL PRODUTO -->
+<div class="modal-overlay" id="prodModal">
+    <div class="modal-box">
+        <div class="modal-head">
+            <h3 id="modal-prod-title">Novo Produto</h3>
+            <button class="modal-close" onclick="closeProdModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" id="prod-id">
+            <div class="form-row">
+                <div class="form-group" style="grid-column: 1/-1">
+                    <label>Nome do Produto *</label>
+                    <input type="text" id="prod-name" placeholder="Ex: Batom Velvet Rose">
+                </div>
+                <div class="form-group">
+                    <label>Categoria</label>
+                    <select id="prod-cat">
+                        <option value="labios">💄 Lábios</option>
+                        <option value="olhos">👁️ Olhos</option>
+                        <option value="rosto">🌸 Rosto</option>
+                        <option value="pele">✨ Pele</option>
+                        <option value="perfume">🌺 Perfume</option>
+                        <option value="kits">🎁 Kits</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Preço (R$) *</label>
+                    <input type="number" id="prod-price" placeholder="0.00" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label>Preço Antigo (R$)</label>
+                    <input type="number" id="prod-old-price" placeholder="Deixe vazio se não tiver">
+                </div>
+                <div class="form-group">
+                    <label>Desconto (%)</label>
+                    <input type="number" id="prod-discount" placeholder="0" min="0" max="100">
+                </div>
+                <div class="form-group" style="grid-column: 1/-1">
+                    <label>URL da Imagem Principal</label>
+                    <input type="text" id="prod-img" placeholder="https://..." oninput="previewMainImg()">
+                    <img id="main-img-preview" src="" style="width:60px;height:60px;object-fit:contain;border-radius:8px;background:#fff0f5;margin-top:8px;display:none;border:1px solid #eee;padding:4px">
+                </div>
+                <div class="form-group" style="grid-column: 1/-1">
+                    <label>Imagens Adicionais (uma URL por linha)</label>
+                    <textarea id="prod-imgs" rows="3" placeholder="https://img1.jpg&#10;https://img2.jpg&#10;https://img3.jpg"></textarea>
+                </div>
+                <div class="form-group" style="grid-column: 1/-1">
+                    <label>Descrição</label>
+                    <textarea id="prod-desc" rows="3" placeholder="Descreva o produto..."></textarea>
+                </div>
+            </div>
+            <div style="display:flex; gap:25px; flex-wrap:wrap">
+                <label class="form-check">
+                    <input type="checkbox" id="prod-promo"> Em promoção (aparece no carrossel)
+                </label>
+                <label class="form-check">
+                    <input type="checkbox" id="prod-querido"> Querido (seção queridinhos)
+                </label>
+                <label class="form-check">
+                    <input type="checkbox" id="prod-bestseller"> Top Vendedor (badge ⭐)
+                </label>
+            </div>
+            <div id="prod-form-err" style="color:#c62828; font-size:0.82rem; margin-top:12px; display:none"></div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-secondary" onclick="closeProdModal()">Cancelar</button>
+            <button class="btn-new" onclick="saveProduto()">
+                <i class="fas fa-save"></i> <span id="btn-save-label">Salvar Produto</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL CONFIRMAÇÃO DELETE -->
+<div class="modal-overlay" id="confirmModal">
+    <div class="confirm-box">
+        <i class="fas fa-trash-alt" style="font-size:2.5rem; color:#c62828; margin-bottom:15px"></i>
+        <h3>Excluir Produto</h3>
+        <p>Tem certeza que deseja excluir este produto? Esta ação não pode ser desfeita.</p>
+        <div class="confirm-actions">
+            <button class="btn-cancel" onclick="closeConfirm()">Cancelar</button>
+            <button class="btn-confirm-del" onclick="confirmDelete()">Excluir</button>
+        </div>
+    </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+    <i id="toast-icon" class="fas fa-check-circle"></i>
+    <span id="toast-msg">Mensagem</span>
+</div>
+
+<script src="JS/admin.js"></script>
+
+</body>
+</html>
